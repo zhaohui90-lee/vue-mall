@@ -19,11 +19,11 @@
     props: {
       interval: {
         type: Number,
-        default: 3000
+        default: 5000
       },
       animDuration: {
         type: Number,
-        default: 300
+        default: 500
       },
       moveRatio: {
         type: Number,
@@ -139,8 +139,11 @@
         this.distance = this.currentX - this.startX;
         let currentPosition = -this.currentIndex * this.totalWidth;
         let moveDistance = this.distance + currentPosition;
+
+        // 2.设置当前的位置
+        this.setTransform(moveDistance);
       },
-      touchEnd(e) {
+      touchEnd() {
         // 1.获取移动的距离
         let currentMove = Math.abs(this.distance);
         // 2.判断最终的距离
